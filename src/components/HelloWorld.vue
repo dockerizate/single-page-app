@@ -13,7 +13,7 @@ export default {
     }
   },
   created () {
-    window.fetch('http://api.dev.local')
+    window.fetch('/api')
       .then(res => res.json())
       .then(body => {
         this.greeting = body.greeting
