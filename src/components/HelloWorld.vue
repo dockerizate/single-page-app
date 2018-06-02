@@ -1,16 +1,32 @@
 <template>
   <div class="hello">
     <h1>{{ greeting }}</h1>
+
+    <picture-uploader />
+
+    <template v-if="files.length">
+      <div v-for="img in files">
+        <img :src="img.src" width="250">
+      </div>
+    </template>
   </div>
 </template>
 
 <script>
+import PictureUploader from './PictureUploader'
+
 export default {
   name: 'HelloWorld',
   data () {
     return {
-      greeting: 'Fetching from /api...'
+      greeting: 'Fetching from /api...',
+      files: [
+        {src: 'http://dev.local:9000/app-pics/vvv.jpg'}
+      ]
     }
+  },
+  components: {
+    PictureUploader
   },
   created () {
     window.fetch('/api')
